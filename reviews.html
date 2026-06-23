@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실시간 체험 후기 | THE HUE</title>
+    <meta name="description" content="THE HUE 코스별 체험 후기 게시판입니다.">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <a class="brand" href="index.html"><span>THE HUE</span><small>Official</small></a>
+        <nav class="desktop-nav">
+            <a href="service.html">서비스</a>
+            <a href="courses.html">코스</a>
+            <a href="reviews.html">후기</a>
+            <a href="board.html">게시판</a>
+            <a href="contact.html">상담</a>
+        </nav>
+        <div class="header-auth">
+            <button type="button" class="header-login">로그인</button>
+            <button type="button" class="header-join">회원가입</button>
+        </div>
+        <button class="menu-toggle" type="button" aria-label="메뉴 열기">☰</button>
+    </header>
+    <nav class="mobile-nav">
+        <a href="service.html">서비스</a>
+        <a href="courses.html">코스</a>
+        <a href="reviews.html">후기</a>
+        <a href="board.html">게시판</a>
+        <a href="contact.html">상담</a>
+    </nav>
+
+    <main>
+        <section class="page-hero reviews-hero">
+            <div class="page-hero-inner">
+                <p class="eyebrow">Reviews</p>
+                <h1>실시간 체험 후기</h1>
+                <p>코스별 후기를 게시판 형태로 확인할 수 있습니다.</p>
+            </div>
+        </section>
+        <section class="section reviews-section">
+            <div class="board-toolbar">
+                <div>
+                    <p class="eyebrow">Review Board</p>
+                    <h2>후기 게시판</h2>
+                </div>
+                <button type="button" class="board-write review-write">글쓰기</button>
+            </div>
+            <div class="reviews-grid" id="reviewMount"></div>
+        </section>
+    </main>
+
+    <footer class="site-footer"><p>© THE HUE Official. All rights reserved.</p></footer>
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원 게시판 | THE HUE</title>
+    <meta name="description" content="THE HUE 회원 게시판. 잠금 게시글과 로그인 UI를 확인하세요.">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <a class="brand" href="index.html"><span>THE HUE</span><small>Official</small></a>
+        <nav class="desktop-nav">
+            <a href="service.html">서비스</a>
+            <a href="courses.html">코스</a>
+            <a href="reviews.html">후기</a>
+            <a href="board.html">게시판</a>
+            <a href="contact.html">상담</a>
+        </nav>
+        <div class="header-auth">
+            <button type="button" class="header-login">로그인</button>
+            <button type="button" class="header-join">회원가입</button>
+        </div>
+        <button class="menu-toggle" type="button" aria-label="메뉴 열기">☰</button>
+    </header>
+    <nav class="mobile-nav">
+        <a href="service.html">서비스</a>
+        <a href="courses.html">코스</a>
+        <a href="reviews.html">후기</a>
+        <a href="board.html">게시판</a>
+        <a href="contact.html">상담</a>
+    </nav>
+
+    <main>
+        <section class="page-hero board-hero">
+            <div class="page-hero-inner">
+                <p class="eyebrow">Member Board</p>
+                <h1>회원 게시판</h1>
+                <p>회원 문의와 답변을 확인하는 게시판 화면입니다. 대부분의 글은 잠금 처리됩니다.</p>
+            </div>
+        </section>
+
+        <section class="page-layout board-layout">
+            <aside class="member-panel">
+                <div class="member-visual"></div>
+                <h2>회원 메뉴</h2>
+                <p>로그인 UI는 화면 구성용입니다. 회원가입은 관리자 문의 안내로 연결됩니다.</p>
+                <form class="login-box" id="loginForm">
+                    <label>
+                        아이디
+                        <input type="text" placeholder="member ID">
+                    </label>
+                    <label>
+                        비밀번호
+                        <input type="password" placeholder="password">
+                    </label>
+                    <button type="submit">로그인</button>
+                </form>
+                <div class="member-actions">
+                    <button type="button" id="joinButton">회원가입</button>
+                    <button type="button" id="writeButton">글쓰기</button>
+                </div>
+                <p class="member-note" id="memberNotice">로그인 후 게시판 기능을 이용할 수 있습니다.</p>
+            </aside>
+
+            <section class="board-panel">
+                <div class="board-toolbar">
+                    <div>
+                        <p class="eyebrow">Board List</p>
+                        <h2>문의 게시글</h2>
+                    </div>
+                    <button type="button" class="board-write" id="boardWriteButton">글쓰기</button>
+                </div>
+
+                <div class="board-table" id="boardTable" aria-label="회원 게시판 목록"></div>
+            </section>
+        </section>
+    </main>
+
+    <div class="board-modal" id="boardModal" aria-hidden="true">
+        <div class="board-modal-box">
+            <button type="button" class="board-modal-close" id="boardModalClose">×</button>
+            <p class="eyebrow" id="boardModalLabel">Notice</p>
+            <h2 id="boardModalTitle">안내</h2>
+            <p id="boardModalText">잠금 게시글입니다.</p>
+        </div>
+    </div>
+
+    <footer class="site-footer"><p>© THE HUE Official. All rights reserved.</p></footer>
+    <script src="script.js"></script>
+</body>
+
+</html>
