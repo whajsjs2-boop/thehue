@@ -1,2 +1,3 @@
 User-agent: *
 Allow: /
+Sitemap: https://whajsjs2-boop.github.io/thehue/sitemap.xml
