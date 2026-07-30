@@ -16,8 +16,8 @@ const COURSE_OPTIONS = {
         prices: { "60": "90,000원", "90": "110,000원", "120": "130,000원" }
     },
     healing: {
-        label: "감성힐링",
-        aliases: ["감성", "힐링", "감성힐링", "healing"],
+        label: "릴랙스",
+        aliases: ["릴랙스", "휴식", "relax"],
         prices: { "60": "100,000원", "90": "120,000원", "120": "140,000원" }
     },
     sportsMassageOil: {
@@ -26,23 +26,23 @@ const COURSE_OPTIONS = {
         prices: { "90": "120,000원", "120": "140,000원" }
     },
     sportsMassageHealing: {
-        label: "스포츠마사지 + 감성힐링",
-        aliases: ["스포츠마사지감성", "스포츠마사지힐링", "스포츠마사지+감성힐링", "스포츠마사지+힐링", "스포츠감성", "스포츠힐링", "스포츠+감성힐링", "스포츠+힐링"],
+        label: "스포츠마사지 + 릴랙스",
+        aliases: ["스포츠마사지릴랙스", "스포츠마사지+릴랙스", "스포츠릴랙스", "스포츠+릴랙스"],
         prices: { "90": "140,000원", "120": "160,000원" }
     },
     sportsMassageHealingFoot: {
-        label: "스포츠마사지 + 감성힐링 + 발",
-        aliases: ["스포츠마사지감성발", "스포츠마사지힐링발", "스포츠마사지+감성힐링+발", "스포츠마사지+힐링+발", "스포츠감성발", "스포츠힐링발", "스포츠+감성힐링+발", "스포츠+힐링+발", "발"],
+        label: "스포츠마사지 + 릴랙스 + 발",
+        aliases: ["스포츠마사지릴랙스발", "스포츠마사지+릴랙스+발", "스포츠릴랙스발", "스포츠+릴랙스+발", "발"],
         prices: { "90": "160,000원", "120": "180,000원" }
     },
     vvipOilFoot: {
-        label: "VVIP 스포츠마사지 + 오일 + 발",
-        aliases: ["vvip오일발", "스포츠마사지오일발", "오일발", "150오일"],
+        label: "프리미엄 스포츠마사지 + 오일 + 발",
+        aliases: ["프리미엄오일발", "스포츠마사지오일발", "오일발", "150오일"],
         prices: { "150": "200,000원" }
     },
     vvipHealingFoot: {
-        label: "VVIP 스포츠마사지 + 감성힐링 + 발",
-        aliases: ["vvip감성발", "vvip힐링발", "감성발", "힐링발", "150감성", "150힐링"],
+        label: "프리미엄 스포츠마사지 + 릴랙스 + 발",
+        aliases: ["프리미엄릴랙스발", "릴랙스발", "150릴랙스"],
         prices: { "150": "220,000원" }
     }
 };
@@ -50,12 +50,12 @@ const COURSE_OPTIONS = {
 const PRICE_BUTTONS = [
     ["스포츠마사지", "sportsMassage"],
     ["오일", "oil"],
-    ["감성힐링", "healing"],
+    ["릴랙스", "healing"],
     ["스포츠마사지+오일", "sportsMassageOil"],
-    ["스포츠마사지+감성힐링", "sportsMassageHealing"],
-    ["스포츠마사지+감성힐링+발", "sportsMassageHealingFoot"],
-    ["VVIP 스포츠마사지+오일+발", "vvipOilFoot"],
-    ["VVIP 스포츠마사지+감성힐링+발", "vvipHealingFoot"]
+    ["스포츠마사지+릴랙스", "sportsMassageHealing"],
+    ["스포츠마사지+릴랙스+발", "sportsMassageHealingFoot"],
+    ["프리미엄 스포츠마사지+오일+발", "vvipOilFoot"],
+    ["프리미엄 스포츠마사지+릴랙스+발", "vvipHealingFoot"]
 ];
 
 const chatState = {
@@ -64,25 +64,25 @@ const chatState = {
 };
 
 let VIRTUAL_REVIEWS = [
-    ["mk_1207", "VIP 120분 스포츠마사지+감성힐링+발", "120분 조합으로 받으니 시간이 딱 맞고 전체적으로 만족도가 높았습니다."],
-    ["june88", "VIP 120분 스포츠마사지+오일", "오일이랑 스포츠마사지 조합이 좋아서 다음에도 같은 코스로 볼 것 같습니다."],
-    ["neo_41", "VIP 120분 스포츠마사지+감성힐링", "상담 답변이 빠르고 코스 설명이 깔끔해서 선택하기 쉬웠습니다."],
-    ["yoon77", "VVIP 150분 스포츠마사지+감성힐링+발", "긴 코스라 여유가 있고 발 관리까지 들어가서 구성이 좋았습니다."],
-    ["river02", "VIP 120분 스포츠마사지+감성힐링+발", "피곤한 날 보기 좋은 구성입니다. 120분이 제일 무난했습니다."],
+    ["mk_1207", "종합 120분 스포츠마사지+릴랙스+발", "120분 조합으로 받으니 시간이 딱 맞고 전체적으로 만족도가 높았습니다."],
+    ["june88", "종합 120분 스포츠마사지+오일", "오일이랑 스포츠마사지 조합이 좋아서 다음에도 같은 코스로 볼 것 같습니다."],
+    ["neo_41", "종합 120분 스포츠마사지+릴랙스", "상담 답변이 빠르고 코스 설명이 깔끔해서 선택하기 쉬웠습니다."],
+    ["yoon77", "프리미엄 150분 스포츠마사지+릴랙스+발", "긴 코스라 여유가 있고 발 관리까지 들어가서 구성이 좋았습니다."],
+    ["river02", "종합 120분 스포츠마사지+릴랙스+발", "피곤한 날 보기 좋은 구성입니다. 120분이 제일 무난했습니다."],
     ["han_904", "오일 90분", "부담 없이 고르기 좋고 가격 안내도 명확했습니다."],
-    ["k_calm", "VIP 120분 스포츠마사지+오일", "상담에서 말이 잘 통해서 예약까지 빠르게 진행됐습니다."],
+    ["k_calm", "종합 120분 스포츠마사지+오일", "상담에서 말이 잘 통해서 예약까지 빠르게 진행됐습니다."],
     ["mori35", "스포츠마사지 120분", "시원한 느낌을 원하면 스포츠마사지 120분도 괜찮았습니다."],
-    ["sol_19", "VIP 120분 스포츠마사지+감성힐링", "코스 설명이 복잡하지 않아서 좋았습니다."],
-    ["blue91", "VVIP 150분 스포츠마사지+오일+발", "시간 여유가 있으면 150분 조합이 확실히 편합니다."]
+    ["sol_19", "종합 120분 스포츠마사지+릴랙스", "코스 설명이 복잡하지 않아서 좋았습니다."],
+    ["blue91", "프리미엄 150분 스포츠마사지+오일+발", "시간 여유가 있으면 150분 조합이 확실히 편합니다."]
 ];
 
 const REVIEW_SERVICES = [
-    "VIP 120분 스포츠마사지+감성힐링+발",
-    "VIP 120분 스포츠마사지+감성힐링",
-    "VIP 120분 스포츠마사지+오일",
-    "VVIP 150분 스포츠마사지+감성힐링+발",
-    "VVIP 150분 스포츠마사지+오일+발",
-    "스포츠마사지+감성힐링 120분",
+    "종합 120분 스포츠마사지+릴랙스+발",
+    "종합 120분 스포츠마사지+릴랙스",
+    "종합 120분 스포츠마사지+오일",
+    "프리미엄 150분 스포츠마사지+릴랙스+발",
+    "프리미엄 150분 스포츠마사지+오일+발",
+    "스포츠마사지+릴랙스 120분",
     "오일 120분",
     "스포츠마사지 120분"
 ];
@@ -91,11 +91,11 @@ const REVIEW_TEXTS = [
     "120분 구성이 가장 균형이 좋았고 다음에도 같은 코스로 볼 생각입니다.",
     "상담 답변이 빠르고 필요한 내용만 정리돼서 예약이 편했습니다.",
     "코스 차이를 이해하기 쉬웠고 시간 선택도 어렵지 않았습니다.",
-    "스포츠마사지와 감성힐링 조합이 잘 맞아서 만족도가 높았습니다.",
+    "스포츠마사지와 릴랙스 조합이 잘 맞아서 만족도가 높았습니다.",
     "발 관리까지 포함된 구성이 확실히 편했습니다.",
     "처음 문의했는데 설명이 깔끔해서 바로 결정했습니다.",
     "가격과 시간이 명확하게 안내돼서 비교하기 좋았습니다.",
-    "120분 VIP 조합이 가장 무난하고 만족스럽게 느껴졌습니다."
+    "120분 종합 조합이 가장 무난하고 만족스럽게 느껴졌습니다."
 ];
 
 VIRTUAL_REVIEWS = VIRTUAL_REVIEWS.concat(Array.from({ length: 86 }, (_, index) => {
@@ -106,28 +106,28 @@ VIRTUAL_REVIEWS = VIRTUAL_REVIEWS.concat(Array.from({ length: 86 }, (_, index) =
 }));
 
 let BOARD_POSTS = [
-    { no: 108, title: "VIP 120분 스포츠마사지+감성힐링+발 예약 문의", writer: "mk_1207", date: "2026-06-12", locked: true, replied: true },
+    { no: 108, title: "종합 120분 스포츠마사지+릴랙스+발 예약 문의", writer: "mk_1207", date: "2026-06-12", locked: true, replied: true },
     { no: 107, title: "오늘 저녁 상담 가능 시간 문의", writer: "calm_41", date: "2026-06-10", locked: true, replied: true },
     { no: 106, title: "스포츠마사지+오일 120분 이용 가능 지역 안내", writer: "river02", date: "2026-05-28", locked: false, replied: true, preview: "문의 감사합니다. 가능 지역은 당일 일정에 따라 달라질 수 있어 카카오톡으로 지역명을 남겨주시면 빠르게 안내드립니다." },
-    { no: 105, title: "VVIP 150분 코스 구성 문의", writer: "blue91", date: "2026-05-04", locked: true, replied: true },
-    { no: 104, title: "감성힐링 코스 시간 추천", writer: "sol_19", date: "2026-04-22", locked: false, replied: true, preview: "처음 이용하시는 경우 90분 또는 120분 코스를 많이 확인하십니다. 원하시는 관리 흐름에 따라 상담에서 자세히 안내드립니다." },
+    { no: 105, title: "프리미엄 150분 코스 구성 문의", writer: "blue91", date: "2026-05-04", locked: true, replied: true },
+    { no: 104, title: "릴랙스 코스 시간 추천", writer: "sol_19", date: "2026-04-22", locked: false, replied: true, preview: "처음 이용하시는 경우 90분 또는 120분 코스를 많이 확인하십니다. 원하시는 관리 흐름에 따라 상담에서 자세히 안내드립니다." },
     { no: 103, title: "예약 변경 문의드립니다", writer: "han_904", date: "2026-04-07", locked: true, replied: true },
-    { no: 102, title: "VIP 120분 스포츠마사지+오일 문의", writer: "k_calm", date: "2026-03-18", locked: false, replied: true, preview: "VIP 120분 스포츠마사지+오일 코스는 140,000원입니다. 예약 가능 시간은 상담으로 확인 부탁드립니다." },
+    { no: 102, title: "종합 120분 스포츠마사지+오일 문의", writer: "k_calm", date: "2026-03-18", locked: false, replied: true, preview: "종합 120분 스포츠마사지+오일 코스는 140,000원입니다. 예약 가능 시간은 상담으로 확인 부탁드립니다." },
     { no: 101, title: "상담 후 예약하려고 합니다", writer: "june88", date: "2026-02-26", locked: true, replied: true },
     { no: 100, title: "오일 90분 가격 확인", writer: "mori35", date: "2026-02-11", locked: false, replied: true, preview: "오일 90분 코스는 110,000원입니다. 전화 또는 카카오톡으로 희망 시간과 지역을 남겨주세요." },
     { no: 99, title: "비공개 상담 문의", writer: "neo_41", date: "2026-01-24", locked: true, replied: true }
 ];
 
 const BOARD_TITLES = [
-    "VIP 120분 스포츠마사지+감성힐링+발 문의",
+    "종합 120분 스포츠마사지+릴랙스+발 문의",
     "예약 가능 시간 확인 부탁드립니다",
     "스포츠마사지+오일 120분 지역 문의",
-    "VVIP 150분 구성 확인",
+    "프리미엄 150분 구성 확인",
     "오늘 상담 가능한가요",
     "카카오톡 상담 남겼습니다",
     "오일 120분 예약 문의",
     "스포츠마사지 120분 가격 확인",
-    "감성힐링 코스 추천 문의",
+    "릴랙스 코스 추천 문의",
     "비공개 일정 문의"
 ];
 
@@ -355,9 +355,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const time = resolveTime(input);
         const hasSportsMassage = normalized.includes("스포츠마사지") || normalized.includes("스포츠") || normalized.includes("sportsmassage");
         const hasOil = normalized.includes("오일") || normalized.includes("oil");
-        const hasHealing = normalized.includes("감성") || normalized.includes("힐링") || normalized.includes("healing");
+        const hasHealing = normalized.includes("릴랙스") || normalized.includes("휴식") || normalized.includes("relax");
         const hasFoot = normalized.includes("발") || normalized.includes("foot");
-        const hasVvip = normalized.includes("vvip") || time === "150";
+        const hasVvip = normalized.includes("프리미엄") || time === "150";
 
         if (hasVvip && hasOil && hasFoot) return "vvipOilFoot";
         if (hasVvip && hasHealing && hasFoot) return "vvipHealingFoot";
