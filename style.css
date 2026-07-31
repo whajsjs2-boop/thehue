@@ -165,7 +165,7 @@ img {
     inset: 0;
     background:
         linear-gradient(90deg, rgba(11, 13, 16, 0.94), rgba(11, 13, 16, 0.64), rgba(11, 13, 16, 0.22)),
-        url("source/home-hero-lifestyle.jpg") center / cover no-repeat;
+        url("source/home-hero-safe.png") center / cover no-repeat;
 }
 
 .hero-content {
@@ -600,31 +600,31 @@ h3 {
 .service-hero {
     background:
         linear-gradient(135deg, rgba(11, 13, 16, 0.94), rgba(18, 30, 38, 0.82)),
-        url("source/service-hero.jpg") center / cover no-repeat;
+        url("source/service-hero-safe.png") center / cover no-repeat;
 }
 
 .courses-hero {
     background:
         linear-gradient(135deg, rgba(11, 13, 16, 0.94), rgba(42, 36, 48, 0.82)),
-        url("source/courses-hero.jpg") center / cover no-repeat;
+        url("source/courses-hero-safe.png") center / cover no-repeat;
 }
 
 .reviews-hero {
     background:
         linear-gradient(135deg, rgba(11, 13, 16, 0.94), rgba(34, 41, 28, 0.82)),
-        url("source/reviews-hero.jpg") center / cover no-repeat;
+        url("source/reviews-hero-safe.png") center / cover no-repeat;
 }
 
 .contact-hero {
     background:
         linear-gradient(135deg, rgba(11, 13, 16, 0.94), rgba(44, 31, 23, 0.82)),
-        url("source/contact-hero.jpg") center / cover no-repeat;
+        url("source/contact-hero-safe.png") center / cover no-repeat;
 }
 
 .board-hero {
     background:
         linear-gradient(135deg, rgba(11, 13, 16, 0.94), rgba(23, 22, 44, 0.82)),
-        url("source/board-hero.jpg") center / cover no-repeat;
+        url("source/board-hero-safe.png") center / cover no-repeat;
 }
 
 .page-hero-inner {
@@ -766,7 +766,7 @@ h3 {
     height: 170px;
     background:
         linear-gradient(180deg, rgba(11, 13, 16, 0.12), rgba(11, 13, 16, 0.82)),
-        url("source/board-panel.jpg") center / cover no-repeat;
+        url("source/board-hero-safe.png") center / cover no-repeat;
 }
 
 .login-box {
@@ -1302,7 +1302,7 @@ h3 {
     .hero-media {
         background:
             linear-gradient(180deg, rgba(11, 13, 16, 0.78), rgba(11, 13, 16, 0.94)),
-            url("source/home-hero-lifestyle.jpg") center / cover no-repeat;
+            url("source/home-hero-safe.png") center / cover no-repeat;
     }
 
     .feature-grid,
