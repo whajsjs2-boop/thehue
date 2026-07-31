@@ -594,7 +594,7 @@ h3 {
     padding: 140px clamp(20px, 5vw, 72px) 70px;
     background:
         linear-gradient(135deg, rgba(11, 13, 16, 0.94), rgba(17, 24, 39, 0.86)),
-        url("source/home-hero.jpg") center / cover no-repeat;
+        url("source/home-hero-safe.png") center / cover no-repeat;
 }
 
 .service-hero {
