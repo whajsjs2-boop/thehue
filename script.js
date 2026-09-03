@@ -20,29 +20,24 @@ const COURSE_OPTIONS = {
         aliases: ["릴랙스", "휴식", "relax"],
         prices: { "60": "100,000원", "90": "120,000원", "120": "140,000원" }
     },
-    sportsMassageOil: {
-        label: "스포츠마사지 + 오일",
-        aliases: ["스포츠마사지오일", "스포츠마사지+오일", "스포츠오일", "스포츠+오일", "sportsMassage oil", "sports massage oil"],
-        prices: { "90": "120,000원", "120": "140,000원" }
+    special: {
+        label: "스페셜",
+        aliases: ["스페셜", "special"],
+        prices: { "60": "110,000원", "90": "130,000원", "120": "150,000원" }
     },
-    sportsMassageHealing: {
-        label: "스포츠마사지 + 릴랙스",
-        aliases: ["스포츠마사지릴랙스", "스포츠마사지+릴랙스", "스포츠릴랙스", "스포츠+릴랙스"],
-        prices: { "90": "140,000원", "120": "160,000원" }
+    vip: {
+        label: "VIP",
+        aliases: ["vip", "브이아이피"],
+        prices: { "60": "120,000원", "90": "140,000원", "120": "160,000원" }
     },
-    sportsMassageHealingFoot: {
-        label: "스포츠마사지 + 릴랙스 + 발",
-        aliases: ["스포츠마사지릴랙스발", "스포츠마사지+릴랙스+발", "스포츠릴랙스발", "스포츠+릴랙스+발", "발"],
-        prices: { "90": "160,000원", "120": "180,000원" }
-    },
-    vvipOilFoot: {
-        label: "프리미엄 스포츠마사지 + 오일 + 발",
-        aliases: ["프리미엄오일발", "스포츠마사지오일발", "오일발", "150오일"],
+    vvipA: {
+        label: "VVIP A코스",
+        aliases: ["vvipa", "a코스", "a코스150"],
         prices: { "150": "200,000원" }
     },
-    vvipHealingFoot: {
-        label: "프리미엄 스포츠마사지 + 릴랙스 + 발",
-        aliases: ["프리미엄릴랙스발", "릴랙스발", "150릴랙스"],
+    vvipB: {
+        label: "VVIP B코스",
+        aliases: ["vvipb", "b코스", "b코스150"],
         prices: { "150": "220,000원" }
     }
 };
@@ -51,11 +46,10 @@ const PRICE_BUTTONS = [
     ["스포츠마사지", "sportsMassage"],
     ["오일", "oil"],
     ["릴랙스", "healing"],
-    ["스포츠마사지+오일", "sportsMassageOil"],
-    ["스포츠마사지+릴랙스", "sportsMassageHealing"],
-    ["스포츠마사지+릴랙스+발", "sportsMassageHealingFoot"],
-    ["프리미엄 스포츠마사지+오일+발", "vvipOilFoot"],
-    ["프리미엄 스포츠마사지+릴랙스+발", "vvipHealingFoot"]
+    ["스페셜", "special"],
+    ["VIP", "vip"],
+    ["VVIP A코스", "vvipA"],
+    ["VVIP B코스", "vvipB"]
 ];
 
 const chatState = {
@@ -270,18 +264,33 @@ document.addEventListener("DOMContentLoaded", () => {
     function getBotReply(input) {
         const normalized = normalizeText(input);
 
-        if (["가격", "금액", "비용", "코스", "price"].some((trigger) => normalized.includes(normalizeText(trigger)))) {
+        const directCourseKey = resolveCourseKey(input);
+        const directTime = resolveTime(input);
+        if (!directCourseKey && (normalized.includes("vvip") || normalized.includes("프리미엄") || (directTime === "150" && !chatState.courseKey))) {
+            clearPriceFlow();
+            return {
+                text: "VVIP는 150분 A코스 200,000원, B코스 220,000원입니다. 코스를 선택해주세요.",
+                actions: [
+                    { label: "VVIP A코스", value: "vvipA" },
+                    { label: "VVIP B코스", value: "vvipB" }
+                ]
+            };
+        }
+        if (!directCourseKey && ["가격", "금액", "비용", "코스", "price"].some((trigger) => normalized.includes(normalizeText(trigger)))) {
+            clearPriceFlow();
             return {
                 text: "어떤 코스 가격을 확인할까요? 아래 버튼을 선택하거나 직접 입력해주세요.",
                 actions: PRICE_BUTTONS.map(([label, key]) => ({ label, value: key }))
             };
         }
-
-        const directCourseKey = resolveCourseKey(input);
-        const directTime = resolveTime(input);
         if (directCourseKey && directTime && COURSE_OPTIONS[directCourseKey].prices[directTime]) {
             clearPriceFlow();
             return { text: formatPriceAnswer(directCourseKey, directTime) };
+        }
+
+        if (directCourseKey && !directTime && Object.keys(COURSE_OPTIONS[directCourseKey].prices).length === 1) {
+            clearPriceFlow();
+            return { text: formatPriceAnswer(directCourseKey, "150") };
         }
 
         if (directCourseKey) {
@@ -350,21 +359,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function resolveCourseKey(input) {
         if (COURSE_OPTIONS[input]) return input;
-
         const normalized = normalizeText(input);
-        const time = resolveTime(input);
-        const hasSportsMassage = normalized.includes("스포츠마사지") || normalized.includes("스포츠") || normalized.includes("sportsmassage");
-        const hasOil = normalized.includes("오일") || normalized.includes("oil");
-        const hasHealing = normalized.includes("릴랙스") || normalized.includes("휴식") || normalized.includes("relax");
-        const hasFoot = normalized.includes("발") || normalized.includes("foot");
-        const hasVvip = normalized.includes("프리미엄") || time === "150";
-
-        if (hasVvip && hasOil && hasFoot) return "vvipOilFoot";
-        if (hasVvip && hasHealing && hasFoot) return "vvipHealingFoot";
-        if (hasSportsMassage && hasHealing && hasFoot) return "sportsMassageHealingFoot";
-        if (hasSportsMassage && hasHealing) return "sportsMassageHealing";
-        if (hasSportsMassage && hasOil) return "sportsMassageOil";
-
+        if (normalized.includes("vvip") || normalized.includes("프리미엄") || /[ab]코스/.test(normalized)) {
+            if (normalized.includes("vvipa") || normalized.includes("a코스")) return "vvipA";
+            if (normalized.includes("vvipb") || normalized.includes("b코스")) return "vvipB";
+            return null;
+        }
         return Object.keys(COURSE_OPTIONS).find((key) =>
             COURSE_OPTIONS[key].aliases.some((alias) => normalized.includes(normalizeText(alias)))
         );
